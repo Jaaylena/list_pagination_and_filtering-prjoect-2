@@ -17,8 +17,13 @@ FSJS project 2 - List Filter and Pagination
    scoped to that function.
 ***/
 //
+document.addEventListener('DOMContentLoaded', () => {
 const studentList = document.querySelectorAll('.student-list');
-let numStudents = 54;
+const pgItems = 10;
+//attempt at exceeding expectations 
+//const studentSearch = document.querySelector('.student-search');
+//const input = studentSearch.querySelector('input');
+
 
 
 
@@ -38,10 +43,22 @@ let numStudents = 54;
    //a function showPage that pulls the list of 54 students 
 
 ***/
-
+//function to display 10 students to a page at a time. list holds the student 
+   //information and page 
 const showPage = (list, page) => {
-   for(let i = 0; i < numStudents.length; i++)
-   console.log(i);
+   const pgList = (page - 1) * 10;
+   const firstPgIndex = 0 + pgList;
+   const lastPgIndex = 9 + pgList;
+   for(let i = 0; i < pgItems.length; i++){
+      if(i <= firstIndex || i >= lastIndex) {
+         pgList[i].style.display = '';
+         console.log(showPage(list, page));
+      }
+
+   }
+  
+
+   
 
 };
 
@@ -57,3 +74,4 @@ const showPage = (list, page) => {
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
+});
