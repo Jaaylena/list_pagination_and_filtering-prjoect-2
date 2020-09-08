@@ -18,93 +18,59 @@ FSJS project 2 - List Filter and Pagination
 ***/
 //
 document.addEventListener('DOMContentLoaded', () => {
-const studentList = document.querySelectorAll('.student-item');
-const perPage = 10;
-
-/*** 
-   Create the `showPage` function to hide all of the items in the 
-   list except for the ten you want to show.
-
-   Pro Tips: 
-     - Keep in mind that with a list of 54 students, the last page 
-       will only display four.
-     - Remember that the first student has an index of 0.
-     - Remember that a function `parameter` goes in the parens when 
-       you initially define the function, and it acts as a variable 
-       or a placeholder to represent the actual function `argument` 
-       that will be passed into the parens later when you call or 
-       "invoke" the function 
-   //a function showPage that pulls the list of 54 students 
-
-***/
-/***function to display 10 students to a page at a time. list holds the student 
-   information and page ***/
-   const showPage = (list, page) => { 
-      const startPage = (page * perPage) - perPage;
-      const lastPage = (page * perPage);
-      // Loop over items in the list parameter 
-      for(let i = 0; i <= studentList.length; i++) {
-         if (list >= startPage && list <= lastPage) {
-            list[i].style.display = block;
-         } else {
-            list[i].style.display = '';
-
+   const studentList = document.querySelectorAll('.student-item');
+   const perPage = 10;
+   
+   /*** 
+      Create the `showPage` function to hide all of the items in the 
+      list except for the ten you want to show.
+   
+      Pro Tips: 
+        - Keep in mind that with a list of 54 students, the last page 
+          will only display four.
+        - Remember that the first student has an index of 0.
+        - Remember that a function `parameter` goes in the parens when 
+          you initially define the function, and it acts as a variable 
+          or a placeholder to represent the actual function `argument` 
+          that will be passed into the parens later when you call or 
+          "invoke" the function 
+      //a function showPage that pulls the list of 54 students 
+   
+   ***/
+   /***function to display 10 students to a page at a time. list holds the student 
+      information and page ***/
+      const showPage = (list, page) => { 
+         list = studentList;
+         page = perPage;
+         // Loop over items in the list parameter 
+         for(let i = 0; i <= list.length; i++) {
+            
+            if (list >= page && list <= page) {
+               list[i].style.display = showPage;
+            } else {
+               list[i].style.display = showPage;
+            }
          }
-      }
-      /* -- If the index of a list item is >= the index of the first item that should be shown on the page -- 
-      && the list item index is <= the index of the last item 
-      that should be shown on the page, show it */ 
-   }; 
+         /* -- If the index of a list item is >= the index of the first item that should be shown on the page -- 
+         && the list item index is <= the index of the last item 
+         that should be shown on the page, show it */ 
+      }; 
+      
+;
    
-/***
- 
-   Create the `appendPageLinks function` to generate, append, and add 
-   functionality to the pagination buttons.
-***/
-
-function appendPageLinks(list) { 
-   const totalPages = Math.ceil(studentList.length / perPage);
-   const ul = document.createElement('ul');
-   const newDiv = document.createElement('div');
-      newDiv.classList = ('pagination');
-      newDiv.appendChild('ul');
-   const pages = document.createElementByClassName('page')[0];
-      page.appendChild(div);
-   const li = document.createElement('li');
-
-   for(let i = 0; i < totalPages.length; i++) {
-      ul.appendChild('li');
-      const pgNumber = document.createElement('pgbutton');
-      li.appendChild(pgNumber);
-      pgNumber.textContent = `${i + 1}`;
-      if (i === 0) {
-         pgNumber.classList.add(active);
-      } else {
-         pgNumber.classList.remove(active);
-      }
-      pgNumber.addEventListener('click', (e) => {
-         const button = document.querySelectorAll('.pagination pgNumber');
-         showPage(studentList, i + 1);
-         for(let j = 0; j < button.length; i++);
-         button[j].classList.add('active');
-         e.target.classList.add('active');
-
-      });
-   }
-};
-
-
-   /* 
-   1. Determine how many pages are needed for the list by dividing the total number of list items by the max number of items per page 
-   2. Create a div, give it the “pagination” class, and append it to the .page div 
-   3. Add a ul to the “pagination” div to store the pagination links 
-   4. for every page, add li and a tags with the page number text 
-   5. Add an event listener to each a tag. When they are clicked 
-   call the showPage function to display the appropriate page 
-   6. Loop over pagination links to remove active class from all links 
-   7. Add the active class to the link that was just clicked. You can identify that 
-   clicked link using event.target */ 
    
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
-});
+      /* 
+      1. Determine how many pages are needed for the list by dividing the total number of list items by the max number of items per page 
+      2. Create a div, give it the “pagination” class, and append it to the .page div 
+      3. Add a ul to the “pagination” div to store the pagination links 
+      4. for every page, add li and a tags with the page number text 
+      5. Add an event listener to each a tag. When they are clicked 
+      call the showPage function to display the appropriate page 
+      6. Loop over pagination links to remove active class from all links 
+      7. Add the active class to the link that was just clicked. You can identify that 
+      clicked link using event.target */ 
+      
+   
+   // Remember to delete the comments that came with this file, and replace them with your own code comments.
+   });
+   
