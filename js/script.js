@@ -18,14 +18,8 @@ FSJS project 2 - List Filter and Pagination
 ***/
 //
 document.addEventListener('DOMContentLoaded', () => {
-const studentList = document.querySelectorAll('.student-list');
-const pgItems = 10;
-//attempt at exceeding expectations 
-//const studentSearch = document.querySelector('.student-search');
-//const input = studentSearch.querySelector('input');
-
-
-
+const studentList = document.querySelectorAll('.student-item');
+const perPage = 10;
 
 /*** 
    Create the `showPage` function to hide all of the items in the 
@@ -43,35 +37,74 @@ const pgItems = 10;
    //a function showPage that pulls the list of 54 students 
 
 ***/
-//function to display 10 students to a page at a time. list holds the student 
-   //information and page 
-const showPage = (list, page) => {
-   const pgList = (page - 1) * 10;
-   const firstPgIndex = 0 + pgList;
-   const lastPgIndex = 9 + pgList;
-   for(let i = 0; i < pgItems.length; i++){
-      if(i <= firstIndex || i >= lastIndex) {
-         pgList[i].style.display = '';
-         console.log(showPage(list, page));
+/***function to display 10 students to a page at a time. list holds the student 
+   information and page ***/
+   const showPage = (list, page) => { 
+      const startPage = (page * perPage) - perPage;
+      const lastPage = (page * perPage);
+      // Loop over items in the list parameter 
+      for(let i = 0; i <= studentList.length; i++) {
+         if (list >= startPage && list <= lastPage) {
+            list[i].style.display = block;
+         } else {
+            list[i].style.display = '';
+
+         }
       }
-
-   }
-  
-
+      /* -- If the index of a list item is >= the index of the first item that should be shown on the page -- 
+      && the list item index is <= the index of the last item 
+      that should be shown on the page, show it */ 
+   }; 
    
-
-};
-
-
 /***
- //a button that generates the  
+ 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
 
+function appendPageLinks(list) { 
+   const totalPages = Math.ceil(studentList.length / perPage);
+   const ul = document.createElement('ul');
+   const newDiv = document.createElement('div');
+      newDiv.classList = ('pagination');
+      newDiv.appendChild('ul');
+   const pages = document.createElementByClassName('page')[0];
+      page.appendChild(div);
+   const li = document.createElement('li');
+
+   for(let i = 0; i < totalPages.length; i++) {
+      ul.appendChild('li');
+      const pgNumber = document.createElement('pgbutton');
+      li.appendChild(pgNumber);
+      pgNumber.textContent = `${i + 1}`;
+      if (i === 0) {
+         pgNumber.classList.add(active);
+      } else {
+         pgNumber.classList.remove(active);
+      }
+      pgNumber.addEventListener('click', (e) => {
+         const button = document.querySelectorAll('.pagination pgNumber');
+         showPage(studentList, i + 1);
+         for(let j = 0; j < button.length; i++);
+         button[j].classList.add('active');
+         e.target.classList.add('active');
+
+      });
+   }
+};
 
 
-
+   /* 
+   1. Determine how many pages are needed for the list by dividing the total number of list items by the max number of items per page 
+   2. Create a div, give it the “pagination” class, and append it to the .page div 
+   3. Add a ul to the “pagination” div to store the pagination links 
+   4. for every page, add li and a tags with the page number text 
+   5. Add an event listener to each a tag. When they are clicked 
+   call the showPage function to display the appropriate page 
+   6. Loop over pagination links to remove active class from all links 
+   7. Add the active class to the link that was just clicked. You can identify that 
+   clicked link using event.target */ 
+   
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
 });
