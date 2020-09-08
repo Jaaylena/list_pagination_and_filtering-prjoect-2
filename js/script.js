@@ -40,15 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
    /***function to display 10 students to a page at a time. list holds the student 
       information and page ***/
       const showPage = (list, page) => { 
-         list = studentList;
-         page = perPage;
+         const firstIndex = (page * perPage) - perPage;
+         const lastIndex = page * perPage
+         studentList.innerHTML = '';
          // Loop over items in the list parameter 
-         for(let i = 0; i <= list.length; i++) {
-            
-            if (list >= page && list <= page) {
-               list[i].style.display = showPage;
+         for(let i = 0; i < list.length; i++) {
+            if ( i >= page && i <= page) {
+               //to show items if true
+               list[i].style.display = 'block';
             } else {
-               list[i].style.display = showPage;
+               //to hide items if false
+               list[i].style.display = 'none';
             }
          }
          /* -- If the index of a list item is >= the index of the first item that should be shown on the page -- 
@@ -56,8 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
          that should be shown on the page, show it */ 
       }; 
       
-;
-   
+      function appendPageLinks(list) {
+         const totalPages = Math.ceil(studentList.length / perPage);
+         const ul = document.createElement('ul');
+         const pageDiv = document.createElement('div')
+            pageDiv.setAttribute(".pagination");
+            pageDiv.appendChild('div', '.page');
+        const li = document.createElement('li')
+         for(let i = 1; totalPages.length; i++) {
+            ul.appendChild('div.pagination');
+         }
+
+      }
    
       /* 
       1. Determine how many pages are needed for the list by dividing the total number of list items by the max number of items per page 
