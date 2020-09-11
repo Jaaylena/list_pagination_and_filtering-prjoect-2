@@ -40,25 +40,27 @@ document.addEventListener('DOMContentLoaded', () => {
    /***function to display 10 students to a page at a time. list holds the student 
       information and page ***/
        function showPage(list, page) { 
-         const firstIndex = (page * perPage) - perPage;
-         const lastIndex = page * perPage;
-         studentList.innerHTML = '';
+          
+         const firstIndex = page * 10 - 10;
+         const lastIndex = page * 10 - 1;
+         
          // Loop over items in the list parameter 
          for(let i = 0; i < studentList.length; i++) {
-            if ( i >= firstIndex && i < lastIndex) {
+            if ( page[i] >= firstIndex && page[i] <= lastIndex) {
                //to show items if true
-               perPage[i].style.display = 'block';
+               list[i].style.display = 'block';
             } else {
                //to hide items if false
-               studentList[i].style.display = '';
+               list[i].style.display = 'none';
             }
-            return studentList;
+          
          }
          /* -- If the index of a list item is >= the index of the first item that should be shown on the page -- 
          && the list item index is <= the index of the last item 
          that should be shown on the page, show it */ 
+         
       }; 
-      console.log(showPage());
+      console.log(showPage(list, 1));
    
       /** 
       function appendPageLinks(list) {
@@ -69,10 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
             pageDiv.appendChild('div', '.page');
         const li = document.createElement('li')
          for(let i = 1; totalPages.length; i++) {
-
             ul.appendChild('div.pagination');
          }
-
       } */
    
       /* 
@@ -89,4 +89,3 @@ document.addEventListener('DOMContentLoaded', () => {
    
    // Remember to delete the comments that came with this file, and replace them with your own code comments.
    });
-   
