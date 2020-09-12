@@ -1,1 +1,1 @@
-# list_pagination_and_filtering-prjoect-2
+# list_pagination_and_filtering-project-2
