@@ -46,12 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
          
          // Loop over items in the list parameter 
          for(let i = 0; i < studentList.length; i++) {
-            if ( page[i] >= firstIndex && page[i] <= lastIndex) {
+            if ( i >= firstIndex && i <= lastIndex) {
                //to show items if true
-               list[i].style.display = 'block';
+               studentList[i].style.display = 'block';
             } else {
                //to hide items if false
-               list[i].style.display = 'none';
+               studentList[i].style.display = 'none';
             }
           
          }
@@ -60,11 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
          that should be shown on the page, show it */ 
          
       }; 
-      console.log(showPage(list, 1));
+      console.log(showPage(studentList, 1 ));
    
-      /** 
+      
       function appendPageLinks(list) {
-         const totalPages = Math.ceil(studentList.length / perPage);
+         const totalPages = Math.ceil(showPage() / perPage);
          const ul = document.createElement('ul');
          const pageDiv = document.createElement('div')
             pageDiv.setAttribute(".pagination");
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
          for(let i = 1; totalPages.length; i++) {
             ul.appendChild('div.pagination');
          }
-      } */
+      } 
    
       /* 
       1. Determine how many pages are needed for the list by dividing the total number of list items by the max number of items per page 
