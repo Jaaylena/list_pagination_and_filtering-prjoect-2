@@ -20,31 +20,16 @@ FSJS project 2 - List Filter and Pagination
 document.addEventListener('DOMContentLoaded', () => {
    const studentList = document.querySelectorAll('.student-item');
    const perPage = 10;
+   const div = document.querySelector('div');
+   const ul = document.querySelector('.student-list');
    
-   /*** 
-      Create the `showPage` function to hide all of the items in the 
-      list except for the ten you want to show.
-   
-      Pro Tips: 
-        - Keep in mind that with a list of 54 students, the last page 
-          will only display four.
-        - Remember that the first student has an index of 0.
-        - Remember that a function `parameter` goes in the parens when 
-          you initially define the function, and it acts as a variable 
-          or a placeholder to represent the actual function `argument` 
-          that will be passed into the parens later when you call or 
-          "invoke" the function 
-      //a function showPage that pulls the list of 54 students 
-   
-   ***/
-   /***function to display 10 students to a page at a time. list holds the student 
-      information and page ***/
+   /***function to display 10 students to a page at a time. ***/
        function showPage(list, page) { 
           
          const firstIndex = page * 10 - 10;
          const lastIndex = page * 10 - 1;
          
-         // Loop over items in the list parameter 
+         // Loop over items in the list parameter creating the list of ten students to a page
          for(let i = 0; i < studentList.length; i++) {
             if ( i >= firstIndex && i <= lastIndex) {
                //to show items if true
@@ -55,30 +40,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           
          }
-         /* -- If the index of a list item is >= the index of the first item that should be shown on the page -- 
-         && the list item index is <= the index of the last item 
-         that should be shown on the page, show it */ 
-         
-      }; 
-      console.log(showPage(studentList, 1 ));
+      }
+      /**testing above function console.log(showPage(studentList, 1 ));
+       * to be deleted */
    
-      
+     /**creating the amount of pages needed to display all 54 students
+      * at 10 students a page */ 
       function appendPageLinks(list) {
-         const totalPages = Math.ceil(showPage() / perPage);
-         const ul = document.createElement('ul');
-         const pageDiv = document.createElement('div')
-            pageDiv.setAttribute(".pagination");
-            pageDiv.appendChild('div', '.page');
-        const li = document.createElement('li')
-         for(let i = 1; totalPages.length; i++) {
-            ul.appendChild('div.pagination');
+         //calculating the number of pages needed to display the student list
+         const numberOfPgs = Math.ceil(perPage.length / showPage(studentList, 1));
+         // a div with the pagination class appending it to the selected page
+         const divPag = document.createElement('div');
+            divPag.className = '.pagination';
+            div.appendChild(divPag);
+         //adding ul to the pagination div that stores the links
+            divPag.appendChild(ul);
+         for(let i = 0; i <= numberOfPgs.length; i++) {
+            
+
          }
-      } 
-   
+      }
+      console.log(appendPageLinks());
       /* 
-      1. Determine how many pages are needed for the list by dividing the total number of list items by the max number of items per page 
-      2. Create a div, give it the “pagination” class, and append it to the .page div 
-      3. Add a ul to the “pagination” div to store the pagination links 
       4. for every page, add li and a tags with the page number text 
       5. Add an event listener to each a tag. When they are clicked 
       call the showPage function to display the appropriate page 
