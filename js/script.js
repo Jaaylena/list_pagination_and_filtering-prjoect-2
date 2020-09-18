@@ -51,18 +51,24 @@ document.addEventListener('DOMContentLoaded', () => {
          // creating a div with pagination class and appending it to the div.page
          const divPagination = document.createElement('div');
          const ulPagination = document.createElement('ul');
-
+         const pgLink = document.createElement('a');
             divPagination.className = 'pagination';
-            divClassPage.insertBefore(divPagination, ulPagination);
+            divClassPage.appendChild(divPagination);
+         const paginationLi = document.createElement('li');
          //adding ul to the pagination div that stores the links
          //a linked page number for each page
          for(let i = 0; i < numberOfPgs; i++) {
-            const paginationLi = document.createElement('li');
-            const pgLink = document.createElement('a');
-            pgLink.textContent = (i + 1);
+            pgLink.textContent = (i + 1); //adding a number to each page?
             paginationLi.appendChild(pgLink);
             ulPagination.appendChild(paginationLi);
          }
+         //adding a link to the pg numbers?
+         for(let i = 0; i <= pgLink.length; i++) {
+            console.log(pglink); //testing this to see if it works no errors in console
+
+         }
+         console.log(appendPageLinks(list)); // still displays undefined
+
       }
       /* 
       5. Add an event listener to each a tag. When they are clicked 
@@ -70,8 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
       6. Loop over pagination links to remove active class from all links 
       7. Add the active class to the link that was just clicked. You can identify that 
       clicked link using event.target */ 
-      
       showPage(studentList, 1 );
-      appendPageLinks(numberOfPgs);  //this needs to be fixed wrong argument maybe 
-   // Remember to delete the comments that came with this file, and replace them with your own code comments.
+      
    });
