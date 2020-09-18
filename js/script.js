@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
    const perPage = 10;
    const divClassPage = document.querySelector('.page');
    const li = document.querySelectorAll('.student-list');
-   const ulPagination = document.createElement('ul');
    
    /***function to display 10 students to a page at a time. ***/
        function showPage(studentList, page) { 
@@ -46,23 +45,24 @@ document.addEventListener('DOMContentLoaded', () => {
    
      /**creating the amount of pages needed to display all 54 students
       * at 10 students a page */ 
-      function appendPageLinks(studentList) {
+      function appendPageLinks(list) {
          //calculating the number of pages needed to display the student list
-         const numberOfPgs = Math.ceil(studentList.length / 10);
+         const numberOfPgs = Math.ceil(list.length / 10);
          // creating a div with pagination class and appending it to the div.page
          const divPagination = document.createElement('div');
+         const ulPagination = document.createElement('ul');
+
             divPagination.className = 'pagination';
-            divClassPage.appendChild(divPagination);
+            divClassPage.insertBefore(divPagination, ulPagination);
          //adding ul to the pagination div that stores the links
          //a linked page number for each page
-         for(let i = 0; i < numberOfPgs.length; i++) {
+         for(let i = 0; i < numberOfPgs; i++) {
             const paginationLi = document.createElement('li');
             const pgLink = document.createElement('a');
-
+            pgLink.textContent = (i + 1);
             paginationLi.appendChild(pgLink);
             ulPagination.appendChild(paginationLi);
          }
-
       }
       /* 
       5. Add an event listener to each a tag. When they are clicked 
@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       7. Add the active class to the link that was just clicked. You can identify that 
       clicked link using event.target */ 
       
-   
+      showPage(studentList, 1 );
+      appendPageLinks(numberOfPgs);  
    // Remember to delete the comments that came with this file, and replace them with your own code comments.
    });
