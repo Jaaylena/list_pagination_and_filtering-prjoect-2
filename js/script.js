@@ -72,6 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
       clicked link using event.target */ 
       
       showPage(studentList, 1 );
-      appendPageLinks(numberOfPgs);  
+      appendPageLinks(numberOfPgs);  //this needs to be fixed wrong argument maybe 
    // Remember to delete the comments that came with this file, and replace them with your own code comments.
    });
