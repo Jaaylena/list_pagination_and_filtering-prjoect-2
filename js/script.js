@@ -52,10 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ulPagination.appendChild(paginationLi);
          }
        const pageNumbers = document.querySelectorAll('a');
-       for(let j = 0; j < pageNumber.length; i++) {
-       pageNumbers[i].addEventListener('click', () => {
+       for(let j = 0; j < pageNumbers.length; j++) {
+       pageNumbers[j].addEventListener('click', (showPage) => {
          showPage(studentList, 1);
-       });
+      });
       }
        
       }
