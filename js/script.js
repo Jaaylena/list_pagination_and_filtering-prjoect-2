@@ -55,29 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
        const pageNumbers = document.getElementsByTagName('a')[0];
          pageNumbers.addEventListener('click', (event) => {
             showPage(studentList, 1);
-            for(let p = 0; p < paginationLi.length; p++) {
-
-            
+            for(let p = 0; p < ulPagination.length; p++) {
+               ulPagination[p].classList.remove('active');
             }
+            const e = event.target;
+            e.classList.add('active');
          });
-       /*
-       previous attemtpt that I negated 
-       for(let j = 0; j < pageNumbers.length; j++) {
-       pageNumbers[j].addEventListener('click', () => { 
-         showPage(list, page);
-        
-      });
-      for(let p = 0; p < pageNumbers.length; p++) {
-         pgNumbers[p].classList.remove('active');
-      }
-      const e = Event.target;
-      e.classList.add('active');
-      }
-       */
-       console.log(pageNumbers);
        
       }
-      appendPageLinks(studentList);
-      showPage(studentList, 1);
+      appendPageLinks(list);
 
    });
