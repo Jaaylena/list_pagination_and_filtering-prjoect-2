@@ -51,14 +51,33 @@ document.addEventListener('DOMContentLoaded', () => {
             paginationLi.appendChild(pgLink);
             ulPagination.appendChild(paginationLi);
          }
-       const pageNumbers = document.querySelectorAll('a');
+         //thinking this a better approach?
+       const pageNumbers = document.getElementsByTagName('a')[0];
+         pageNumbers.addEventListener('click', (event) => {
+            showPage(studentList, 1);
+            for(let p = 0; p < paginationLi.length; p++) {
+
+            
+            }
+         });
+       /*
+       previous attemtpt that I negated 
        for(let j = 0; j < pageNumbers.length; j++) {
-       pageNumbers[j].addEventListener('click', (showPage) => {
-         showPage(studentList, 1);
+       pageNumbers[j].addEventListener('click', () => { 
+         showPage(list, page);
+        
       });
+      for(let p = 0; p < pageNumbers.length; p++) {
+         pgNumbers[p].classList.remove('active');
       }
+      const e = Event.target;
+      e.classList.add('active');
+      }
+       */
+       console.log(pageNumbers);
        
       }
       appendPageLinks(studentList);
+      showPage(studentList, 1);
 
    });
