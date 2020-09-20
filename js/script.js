@@ -42,8 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             divPagination.appendChild(ulPagination);
           
      
-         //a linked page number for each page needed to display each student
-      
+//creating page numbers with links       
          for(let i = 0; i < numberOfPgs; i++) {
             const pgLink = document.createElement('a');
             const paginationLi = document.createElement('li');
@@ -52,9 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
             paginationLi.appendChild(pgLink);
             ulPagination.appendChild(paginationLi);
          }
+       const pageNumbers = document.querySelectorAll('a');
+       pageNumbers.addEventListene('click', () => {
+         showPage(studentList, 1);
+
+       });
+       console.log(pageNumbers);
        
       }
       appendPageLinks(studentList);
-      showPage(studentList, 1 );
-      
+
    });
