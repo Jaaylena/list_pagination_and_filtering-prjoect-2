@@ -40,29 +40,35 @@ document.addEventListener('DOMContentLoaded', () => {
             divPagination.className = 'pagination';
             divClassPage.appendChild(divPagination);
             divPagination.appendChild(ulPagination);
-          
-     
+         
 //creating page numbers with links       
          for(let i = 0; i < numberOfPgs; i++) {
             const pgLink = document.createElement('a');
             const paginationLi = document.createElement('li');
             pgLink.href = '#';
-            pgLink.textContent = (i + 1).toString();
+            pgLink.textContent = `${i+1}`;
             paginationLi.appendChild(pgLink);
             ulPagination.appendChild(paginationLi);
-         }
-         //thinking this a better approach?
-       const pageNumbers = document.getElementsByTagName('a')[0];
-         pageNumbers.addEventListener('click', (event) => {
-            showPage(studentList, 1);
-            for(let p = 0; p < ulPagination.length; p++) {
-               ulPagination[p].classList.remove('active');
+            if(i === 0) {
+               pgLink.classList.add('active');
+            }else{
+               pgLink.classList.remove('active');
             }
-            const e = event.target;
-            e.classList.add('active');
-         });
+//when page number links are clicked the appropriate list is displayed
+            pgLink.addEventListener('click', () => {
+               const pageNumbers = document.querySelectorAll('.pagination a');
+                  showPage(studentList, i + 1);
+                  for(let p = 0; p < pageNumbers.length; p++) {
+                     pageNumbers[p].classList.remove('active');
+                     event.target.classList.add('active');
+                  }  
+                  
+               });
+         }
+   //changes the list of 10 student that appear according to the page selected
+        
        
       }
-      appendPageLinks(list);
-
+      showPage(studentList, 1);
+      appendPageLinks(studentList);
    });
