@@ -52,11 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
             ulPagination.appendChild(paginationLi);
          }
        const pageNumbers = document.querySelectorAll('a');
-       pageNumbers.addEventListene('click', () => {
+       for(let j = 0; j < pageNumber.length; i++) {
+       pageNumbers[i].addEventListener('click', () => {
          showPage(studentList, 1);
-
        });
-       console.log(pageNumbers);
+      }
        
       }
       appendPageLinks(studentList);
