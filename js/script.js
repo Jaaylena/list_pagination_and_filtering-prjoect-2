@@ -8,7 +8,27 @@ FSJS project 2 - List Filter and Pagination
 document.addEventListener('DOMContentLoaded', () => {
    const studentList = document.querySelectorAll('.student-item');
    const perPage = 10;
-   const divClassPage = document.querySelector('.page');
+  
+   //function for searching names
+   function nameSearch(searchInput, names) {
+      //creating the search bar 
+      const h2 = document.getElementById('h2');
+      const searchDiv = document.createElement('div');
+         searchDiv.className = 'search-bar';
+         h2.appendChild(searchDiv);
+      const form = document.createElement('form');
+         searchDiv.appendChild(form);
+//filtering the names 
+         for(let n = 0; n < names.length; n++){
+         name[n].classList.remove('active');
+         if(searchInput.value.length !== 0 && names[i].toLowerCase().includes(searchInput.value.toLowerCase())){
+            names[i].classList.add('active');
+         }
+      }
+      console.log(searchInput);
+      console.log(names);
+
+   }
 
    /***function to display 10 students to a page at a time. ***/
        function showPage(studentList, page) { 
@@ -37,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
           and appending it to the div.page**/
          const divPagination = document.createElement('div');
          const ulPagination = document.createElement('ul');
+          const divClassPage = document.querySelector('.page');
             divPagination.className = 'pagination';
             divClassPage.appendChild(divPagination);
             divPagination.appendChild(ulPagination);
