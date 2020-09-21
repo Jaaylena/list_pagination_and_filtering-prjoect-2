@@ -55,12 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
                pgLink.classList.remove('active');
             }
 //when page number links are clicked the appropriate list is displayed
-            pgLink.addEventListener('click', () => {
+            pgLink.addEventListener('click', (e) => {
                const pageNumbers = document.querySelectorAll('.pagination a');
                   showPage(studentList, i + 1);
                   for(let p = 0; p < pageNumbers.length; p++) {
                      pageNumbers[p].classList.remove('active');
-                     event.target.classList.add('active');
+                     e.target.classList.add('active');
                   }  
                   
                });
