@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       * the page number is  */ 
       function appendPageLinks(list) {
          //calculating the number of pages needed to display the student list
-         const numberOfPgs = Math.ceil(list.length / 10);
+         const numberOfPgs = Math.ceil(list.length / perPage);
          /* creating a div with pagination class with a ul that stores the pg links
           and appending it to the div.page**/
          const divPagination = document.createElement('div');
