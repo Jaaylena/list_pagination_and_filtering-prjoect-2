@@ -24,15 +24,16 @@ function nameSearch(input, names) {
    const searchButton = document.createElement('button');
    headerDiv.appendChild(searchButton);
    searchButton.type = 'submit';
-   searchButton.textContent = 'Submit';
-//The code in notes below isn't working says length is undefined.
-   //for(let n = 0; n < names.length; n++){
-     // names[n].classList.remove('active');
-      //if(Input.value.length !== 0 && names[n].toLowerCase().includes(Input.value.toLowerCase())){
-      //   names[n].classList.add('active');
-      //}
-   console.log(names);
-   }
+   searchButton.textContent = 'Search';
+   
+   searchButton.addEventListener('click', (event) => {
+      console.log('submit button works!');
+
+   });
+      
+      
+  
+  
  }
  nameSearch();
    /***function to display 10 students to a page at a time. ***/
