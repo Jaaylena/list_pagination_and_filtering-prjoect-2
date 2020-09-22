@@ -25,9 +25,9 @@ function nameSearch(input, names) {
    headerDiv.appendChild(searchButton);
    searchButton.type = 'submit';
    searchButton.textContent = 'Submit';
-
-   for(let n = 0; n < names.length; n++){
-      names[n].classList.remove('active');
+//The code in notes below isn't working says length is undefined.
+   //for(let n = 0; n < names.length; n++){
+     // names[n].classList.remove('active');
       //if(Input.value.length !== 0 && names[n].toLowerCase().includes(Input.value.toLowerCase())){
       //   names[n].classList.add('active');
       //}
