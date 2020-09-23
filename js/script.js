@@ -27,12 +27,21 @@ function nameSearch(input, names) {
    searchButton.textContent = 'Search';
    
    searchButton.addEventListener('click', (event) => {
+      for(let i = 0; i < studentList.length; i++) {
+         studentList[i].style.display = 'none';
+         if(searchInput.value.length === 0 && studentList[i].textContent.toLowerCase().includes(
+            searchInput.value.toLowerCase())) {
+               studentList[i].style.display = 'block';
+         }
+      } 
+      
+     
+      
       console.log('submit button works!');
 
    });
       
       
-  
   
  }
  nameSearch();
