@@ -13,44 +13,41 @@ function nameSearch(input, names) {
 /*creating a div with a class name student-search and appending it to the div
   element with the class name page-header
   */ 
-   let pageHeaderDiv, headerDiv, searchInput, searchButton;
-   pageHeaderDiv = document.querySelector('.page-header');
-   headerDiv = document.createElement('div');
+   const pageHeaderDiv = document.querySelector('.page-header');
+   const headerDiv = document.createElement('div');
       headerDiv.className = 'student-search';
       pageHeaderDiv.appendChild(headerDiv);
    /*creating a search box */
-   searchInput = document.createElement('input');
+  const searchInput = document.createElement('input');
    headerDiv.appendChild(searchInput);
    searchInput.className = 'student';
    searchInput.type = 'text';
    searchInput.placeholder = 'Search for Students...'; 
 //creating a search button and appending it to the searchbar
-   searchButton = document.createElement('button');
+   const searchButton = document.createElement('button');
    headerDiv.appendChild(searchButton);
    searchButton.type = 'submit';
    searchButton.textContent = 'Search';
-   const filter = searchInput.value.toLowerCase();
+   
    /* making the dom look for matches from the search input when it's clicked 
-   still not working*/
-   searchButton.addEventListener('click', (element) => {
-      const matches = [];
+   */
+   searchButton.addEventListener('click', (e) => {
+      //creating a variable to store the input value 
+      const searchString = e.target.value;
+      const filter = searchInput.value.toLowerCase();
+      let matches = [];
       for(let i = 0; i < studentList.length; i++) {
-         if(studentList[i].innerHTML.toLowerCase().indexOf(filter) > -1) {
-            studentList[i].style.display = 'none';
-         } else {
-            matches.push(studentList[i]);
-         
-         }
-
-      } 
+         matches.push(studentList[i]);
+      }
+      
       console.log(matches.length);
-      console.log(matches);
-      showPage(matches.length) ;
+      console.log(searchString);
+      showPage(matches) ;
       console.log('submit button works!');
 
    }); 
  }
- nameSearch();
+ nameSearch( );
    /***function to display 10 students to a page at a time. ***/
 function showPage(studentList, page) { 
    let firstIndex, lastIndex;
