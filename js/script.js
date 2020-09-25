@@ -8,47 +8,54 @@ FSJS project 2 - List Filter and Pagination
 document.addEventListener('DOMContentLoaded', () => {
    const studentList = document.querySelectorAll('.student-item');
    const perPage = 10;
-//search function creates an search box 
+//search function creates a search box 
 function nameSearch(input, names) {
-   const pageHeaderDiv = document.querySelector('.page-header');
-  //creating a searchbar and appending it to the header 
-   const headerDiv = document.createElement('div');
+/*creating a div with a class name student-search and appending it to the div
+  element with the class name page-header
+  */ 
+   let pageHeaderDiv, headerDiv, searchInput, searchButton;
+   pageHeaderDiv = document.querySelector('.page-header');
+   headerDiv = document.createElement('div');
       headerDiv.className = 'student-search';
       pageHeaderDiv.appendChild(headerDiv);
-   const searchInput = document.createElement('input');
+   /*creating a search box */
+   searchInput = document.createElement('input');
    headerDiv.appendChild(searchInput);
    searchInput.className = 'student';
    searchInput.type = 'text';
    searchInput.placeholder = 'Search for Students...'; 
 //creating a search button and appending it to the searchbar
-   const searchButton = document.createElement('button');
+   searchButton = document.createElement('button');
    headerDiv.appendChild(searchButton);
    searchButton.type = 'submit';
    searchButton.textContent = 'Search';
-   
-   searchButton.addEventListener('click', (event) => {
+   const filter = searchInput.value.toLowerCase();
+   /* making the dom look for matches from the search input when it's clicked 
+   still not working*/
+   searchButton.addEventListener('click', (element) => {
+      const matches = [];
       for(let i = 0; i < studentList.length; i++) {
-         studentList[i].style.display = 'none';
-         if(searchInput.value.length === 0 && studentList[i].textContent.toLowerCase().includes(
-            searchInput.value.toLowerCase())) {
-               studentList[i].style.display = 'block';
+         if(studentList[i].innerHTML.toLowerCase().indexOf(filter) > -1) {
+            studentList[i].style.display = 'none';
+         } else {
+            matches.push(studentList[i]);
+         
          }
+
       } 
-      
-     
-      
+      console.log(matches.length);
+      console.log(matches);
+      showPage(matches.length) ;
       console.log('submit button works!');
 
-   });
-      
-      
-  
+   }); 
  }
  nameSearch();
    /***function to display 10 students to a page at a time. ***/
 function showPage(studentList, page) { 
-   const firstIndex = page * 10 - 10;
-   const lastIndex = page * 10 - 1;
+   let firstIndex, lastIndex;
+   firstIndex = page * 10 - 10;
+   lastIndex = page * 10 - 1;
          
  // Loop over items in the list parameter creating the list of ten students to a page
     for(let i = 0; i < studentList.length; i++) {
@@ -68,8 +75,16 @@ function showPage(studentList, page) {
       function appendPageLinks(list) {
          //calculating the number of pages needed to display the student list
          const numberOfPgs = Math.ceil(list.length / 10);
+   //checking for the pagnation div
+         const pagDiv = document.querySelector('.pagination');
+         if(typeof(pagDiv) != 'undefined' && pagDiv != null) {
+            pagDiv.remove();
+            console.log('element exist');
+         } 
+         console.log(pagDiv);
+
          /* creating a div with pagination class with a ul that stores the pg links
-          and appending it to the div.page**/
+          and appending it to the div.page**/       
           const divClassPage = document.querySelector('.page');
          const divPagination = document.createElement('div');
          const ulPagination = document.createElement('ul');
