@@ -41,14 +41,14 @@ function nameSearch(input, names) {
       for(let i = 0; i < studentList.length; i++) {
 //conditional statement to compare the search value with the names variable 
       if(filter == studentList[i]) {
-         matches.push(studentList[i]);
+         matches.push(filter);
       } 
 
       }
       
       console.log(matches.length);
       console.log(matches);
-      showPage() ;
+      showPage(matches) ;
       console.log('submit button works!');
 
    }); 
