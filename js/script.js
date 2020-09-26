@@ -12,8 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function nameSearch(input, names) {
 /*select the div with a class name page-header and assign it to a variable
   */ 
-   names = document.getElementById('h3');
-   const pageHeaderDiv = document.querySelector('.page-header');
+    const pageHeaderDiv = document.querySelector('.page-header');
    //create a div with a class name student-search and append it to the pageHeaderDiv
    const headerDiv = document.createElement('div');
       headerDiv.className = 'student-search';
@@ -37,15 +36,14 @@ function nameSearch(input, names) {
       //creating a variable to store the input value 
       //const searchString = e.target.value;
       const filter = searchInput.value.toLowerCase();
-      
+      let matches = [];
       //looping through the studentList to check for matches.
       for(let i = 0; i < studentList.length; i++) {
-         let matches = [];
-
 //conditional statement to compare the search value with the names variable 
       if(filter == studentList[i]) {
          matches.push(studentList[i]);
-      }
+      } 
+
       }
       
       console.log(matches.length);
