@@ -40,8 +40,9 @@
          let matches = [];
          //looping through the studentList to check for matches.
          for(let i = 0; i < studentNames.length; i++) {
-   //conditional statement to compare the search value with the names variable 
-         if(filter == studentNames[i]) {
+   /*conditional statement to compare the search value with the student names variable 
+   and pushing it to the matches array*/
+         if(studentNames[i].textContent.includes(filter)) {
             matches.push(studentList[i]);
          } 
          console.log(matches.length);
@@ -49,9 +50,9 @@
          }
          
          console.log(matches.length);
-         console.log(matches);
+         console.log(typeof(studentNames.textContent));
          showPage(studentList) ;
-         console.log('submit button works!');
+         console.log('getting closer');
 
       }); 
    }
