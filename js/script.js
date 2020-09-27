@@ -12,7 +12,6 @@
    function nameSearch(input, names) {
    /*select the div with a class name page-header and assign it to a variable
    */ 
-      const studentNames = document.querySelectorAll('h3');
       const pageHeaderDiv = document.querySelector('.page-header');
       //create a div with a class name student-search and append it to the pageHeaderDiv
       const headerDiv = document.createElement('div');
@@ -31,34 +30,43 @@
       headerDiv.appendChild(searchButton);
       searchButton.type = 'submit';
       searchButton.textContent = 'Search';
-      /* making the dom look for matches from the search input when it's clicked 
+      /* create an event listener that listens for a click 
       */
       searchButton.addEventListener('click', (e) => {
          //creating a variable to store the input value 
+         const studentNames = document.querySelectorAll('h3');
          //const searchString = e.target.value;
          const filter = searchInput.value.toLowerCase();
          let matches = [];
-         //looping through the studentList to check for matches.
-         for(let i = 0; i < studentNames.length; i++) {
+         console.log(filter);
+         //looping through the student names to check for matches.
+         for(let i = 0; i < studentList.length; i++) {
+            /*hide every student in the list */
+            studentList[i].style.display = 'none'; 
    /*conditional statement to compare the search value with the student names variable 
    and pushing it to the matches array*/
-         if(studentNames[i].textContent.includes(filter)) {
-            matches.push(studentList[i]);
-         } 
-         console.log(matches.length);
-
-         }
+         if(studentList[i].textContent.includes(filter)) {
+           matches.push(studentList[i]);
+           console.log(studentList[i]);
+           console.log(matches);
+           console.log(matches.length);
+           showPage(studentList[i]) ;
+            console.log(showPage(studentList[i])
+            );
+         //console.log(typeof(studentNames[i].textContent.includes(filter)));
          
-         console.log(matches.length);
-         console.log(typeof(studentNames.textContent));
-         showPage(studentList) ;
-         console.log('getting closer');
+//show only the students that match 
+           return;
+         
+         } 
+         appendPageLinks(list);
 
+         console.log('getting closer');
+      }
       }); 
    }
-   nameSearch( );
       /***function to display 10 students to a page at a time. ***/
-   function showPage(studentList, page) { 
+   function showPage(list, page) { 
       let firstIndex, lastIndex;
       firstIndex = page * 10 - 10;
       lastIndex = page * 10 - 1;
@@ -84,6 +92,7 @@
       //checking for the pagnation div
             const pagDiv = document.querySelector('.pagination');
             if(typeof(pagDiv) != 'undefined' && pagDiv != null) {
+               //removing it if it
                pagDiv.remove();
                console.log('element exist');
             } 
@@ -123,8 +132,10 @@
                   });
             }
       //changes the list of 10 student that appear according to the page selected
-      
+            showPage(list);
          }
          showPage(studentList, 1);
          appendPageLinks(studentList);
+         nameSearch();
+
       });
