@@ -51,7 +51,6 @@
             matches.push(studentNames);
             studentInfo.style.display = 'block';
             console.log(studentNames);
-            console.log(studentList[i]);
             console.log(matches);
             console.log(matches.length);            
    //show only the students that match
@@ -95,7 +94,7 @@
                const numberOfPgs = Math.ceil(list.length / 10);
          //checking for the pagnation div
                const pagDiv = document.querySelector('.pagination');
-               if(typeof(pagDiv) != 'undefined' && pagDiv != null) {
+               if(typeof(pagDiv) == 'undefined' && pagDiv == null) {
                   //removing it if it
                   pagDiv.remove();
                   console.log('element exist');
@@ -136,10 +135,9 @@
                      });
                }
                showPage(list, 1);
-
             }
-            showPage(studentList);
-            appendPageLinks(studentList);
+            showPage(list);
+            appendPageLinks(list);
             nameSearch();
 
          });
