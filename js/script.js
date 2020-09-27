@@ -1,4 +1,4 @@
-   /******************************************
+/******************************************
    Treehouse Techdegree:
    FSJS project 2 - List Filter and Pagination
    ******************************************/
@@ -55,16 +55,17 @@
          console.log(typeof(studentNames[i].textContent.includes(filter) == studentList[i]));
          
 //show only the students that match 
-           return;
+           
          
          } 
          console.log('getting closer');
       }
+      showPage(matches);
+      appendPageLinks(matches);
+
       }); 
-      showPage(searchInput);
 
       console.log('nameSearch test');
-      appendPageLinks(studentList);
 
    }
       /***function to display 10 students to a page at a time. ***/
