@@ -33,37 +33,39 @@
       /* create an event listener that listens for a click 
       */
       searchButton.addEventListener('click', (e) => {
-         //creating a variable to store the input value 
-         const studentNames = document.querySelectorAll('h3');
-         //const searchString = e.target.value;
+          /*create a variable that selects the h3 element to compare */
+          const studentNames = document.querySelectorAll('h3');
+         //creating a filter that reviews the value of the search input
          const filter = searchInput.value.toLowerCase();
+         //creating a variable to store the input value into an array
          let matches = [];
          console.log(filter);
          //looping through the student names to check for matches.
-         for(let i = 0; i < studentList.length; i++) {
+         for(let i = 0; i < studentNames.length; i++) {
             /*hide every student in the list */
             studentList[i].style.display = 'none'; 
    /*conditional statement to compare the search value with the student names variable 
    and pushing it to the matches array*/
-         if(studentList[i].textContent.includes(filter)) {
+      if(studentNames[i].textContent.includes(filter)) {
            matches.push(studentList[i]);
+           console.log(studentNames);
            console.log(studentList[i]);
            console.log(matches);
            console.log(matches.length);
-           showPage(studentList[i]) ;
-            console.log(showPage(studentList[i])
-            );
-         //console.log(typeof(studentNames[i].textContent.includes(filter)));
+         console.log(typeof(studentNames[i].textContent.includes(filter) == studentList[i]));
          
 //show only the students that match 
            return;
          
          } 
-         appendPageLinks(list);
-
          console.log('getting closer');
       }
       }); 
+      showPage(searchInput);
+
+      console.log('nameSearch test');
+      appendPageLinks(studentList);
+
    }
       /***function to display 10 students to a page at a time. ***/
    function showPage(list, page) { 
