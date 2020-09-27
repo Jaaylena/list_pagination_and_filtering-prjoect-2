@@ -137,8 +137,8 @@
       //changes the list of 10 student that appear according to the page selected
             showPage(list);
          }
-         showPage(studentList, 1);
-         appendPageLinks(studentList);
+         showPage(list, 1);
+         appendPageLinks(list);
          nameSearch();
 
       });
