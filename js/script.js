@@ -33,14 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
 				const filter = searchInput.value.toLowerCase();
 				const studentInfo = studentList[i];
 				/*create a variable that selects the h3 element to compare */
-				const studentNames = studentInfo.querySelector('h3')
-					.innerText.toLowerCase();
+				const studentNames = studentInfo.querySelector('h3').innerText.toLowerCase();
 				//hiding list
 				studentInfo.style.display = 'none';
 				/*conditional statement to compare the search value with the student names variable 
 				and pushing it to the matches array*/
 				if (studentNames.includes(filter)) {
-					//show only the students that match
+               //show only the students that match
 					matches.push(studentInfo);
 					console.log(studentNames);
 					console.log(matches);
@@ -48,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 			}
 			console.log('Search button works');
-			showPage(list, 1);
+         showPage(matches, 1);
+         console.log(showPage(matches,1));
 		});
 		console.log('nameSearch test');
 	}
@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	/**a funtion that determines the number of pages needed to append 10 out of 54
 	 * students */
 	function appendPageLinks(list) {
+		
 		//calculating the number of pages needed to display the student list
 		const numberOfPgs = Math.ceil(list.length / 10);
 		//checking for the pagnation div
@@ -105,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			//when a page number link is clicked the corresponding list is displayed
 			pgLink.addEventListener('click', (event) => {
 				const pageNumbers = document.querySelectorAll('.pagination a');
-				showPage(studentList, i + 1);
+				showPage(list, i + 1);
 				for (let p = 0; p < pageNumbers.length; p++) {
 					pageNumbers[p].classList.remove('active');
 					event.target.classList.add('active');
