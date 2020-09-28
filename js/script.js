@@ -7,7 +7,6 @@
 
       document.addEventListener('DOMContentLoaded', () => {
          const studentList = document.querySelectorAll('.student-item');
-         const perPage = 10;
       //search function creates a search box 
       function nameSearch(input, names) {
       /*select the div with a class name page-header and assign it to a variable
@@ -38,36 +37,37 @@
             //looping through the student names to check for matches.
             for(let i = 0; i < studentList.length; i++) {
          //creating a filter that reviews the value of the search input
-
                const filter = searchInput.value.toLowerCase();
                const studentInfo = studentList[i];
         /*create a variable that selects the h3 element to compare */
                const studentNames = studentInfo.querySelector('h3').innerText.toLowerCase();
-               /*hide every student in the list */
-               studentInfo.style.display = 'none'; 
       /*conditional statement to compare the search value with the student names variable 
       and pushing it to the matches array*/
          if(studentNames.includes(filter)) {
-            matches.push(studentNames);
+       //show only the students that match
             studentInfo.style.display = 'block';
+            matches.push(studentNames);
             console.log(studentNames);
             console.log(matches);
             console.log(matches.length);            
-   //show only the students that match
-            
-            } 
-            console.log('Search button works');
-         }
-         showPage(matches);
-         appendPageLinks(matches);
+          }   else {
+           /*hide every student in the list */
 
-         }); 
+            studentInfo.style.display = 'none'; 
+
+          }
+       }
+       console.log('Search button works');
+       showPage(matches, 1);
+
+     }); 
 
          console.log('nameSearch test');
 
       }
          /***function to display 10 students to a page at a time. ***/
       function showPage(list, page) { 
+         list = studentList;
          let firstIndex, lastIndex;
          firstIndex = page * 10 - 10;
          lastIndex = page * 10 - 1;
@@ -80,16 +80,16 @@
          } else {
          //to hide items if false
             studentList[i].style.display = 'none';
-            //add "Sorry, no students found." 
                
             }
                
-            }
-         }
+          }
+       }
          
          /**a funtion that determines the number of pages needed to append 10 out of 54
             * students */ 
             function appendPageLinks(list) {
+               list = studentList;
                //calculating the number of pages needed to display the student list
                const numberOfPgs = Math.ceil(list.length / 10);
          //checking for the pagnation div
@@ -135,9 +135,10 @@
                      });
                }
                showPage(list, 1);
+               appendPageLinks(list);
             }
-            showPage(list);
-            appendPageLinks(list);
+            
             nameSearch();
+
 
          });
