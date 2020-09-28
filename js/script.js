@@ -1,8 +1,3 @@
-/******************************************
-   Treehouse Techdegree:
-   FSJS project 2 - List Filter and Pagination
-   ******************************************/
-// Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
 document.addEventListener('DOMContentLoaded', () => {
 	const studentList = document.querySelectorAll('.student-item');
 	//search function creates a search box 
@@ -46,20 +41,19 @@ document.addEventListener('DOMContentLoaded', () => {
 				and pushing it to the matches array*/
 				if (studentNames.includes(filter)) {
 					//show only the students that match
-					matches.push(studentNames);
+					matches.push(studentInfo);
 					console.log(studentNames);
 					console.log(matches);
 					console.log(matches.length);
 				}
 			}
 			console.log('Search button works');
-			showPage(matches, 1);
+			showPage(list, 1);
 		});
 		console.log('nameSearch test');
 	}
 	/***function to display 10 students to a page at a time. ***/
 	function showPage(list, page) {
-		list = studentList;
 		let firstIndex, lastIndex;
 		firstIndex = page * 10 - 10;
 		lastIndex = page * 10 - 1;
@@ -77,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	/**a funtion that determines the number of pages needed to append 10 out of 54
 	 * students */
 	function appendPageLinks(list) {
-		list = studentList;
 		//calculating the number of pages needed to display the student list
 		const numberOfPgs = Math.ceil(list.length / 10);
 		//checking for the pagnation div
@@ -123,3 +116,4 @@ document.addEventListener('DOMContentLoaded', () => {
 	showPage(studentList, 1);
 	appendPageLinks(studentList);
 	nameSearch();
+});
