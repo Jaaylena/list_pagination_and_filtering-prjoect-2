@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
 	const studentList = document.querySelectorAll('.student-item');
 	//search function creates a search box 
 	function nameSearch(input, names) {
@@ -41,16 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				if (studentNames.includes(filter)) {
                //show only the students that match
 					matches.push(studentInfo);
-					console.log(studentNames);
-					console.log(matches);
-					console.log(matches.length);
 				}
 			}
-			console.log('Search button works');
          showPage(matches, 1);
-         console.log(showPage(matches,1));
 		});
-		console.log('nameSearch test');
 	}
 	/***function to display 10 students to a page at a time. ***/
 	function showPage(list, page) {
@@ -58,13 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		firstIndex = page * 10 - 10;
 		lastIndex = page * 10 - 1;
 		// Loop over items in the list parameter creating the list of ten students to a page
-		for (let i = 0; i < studentList.length; i++) {
+		for (let i = 0; i < list.length; i++) {
 			if (i >= firstIndex && i <= lastIndex) {
 				//to show items if true
-				studentList[i].style.display = 'block';
+				list[i].style.display = 'block';
 			} else {
 				//to hide items if false
-				studentList[i].style.display = 'none';
+				list[i].style.display = 'none';
 			}
 		}
 	}
@@ -81,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			pagDiv.remove();
 			console.log('element exist');
 		}
-		console.log(pagDiv);
 		/* creating a div with pagination class with a ul that stores the pg links
 		and appending it to the div.page**/
 		const divClassPage = document.querySelector('.page');
@@ -117,4 +109,4 @@ document.addEventListener('DOMContentLoaded', () => {
 	showPage(studentList, 1);
 	appendPageLinks(studentList);
 	nameSearch();
-});
+
