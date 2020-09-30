@@ -43,7 +43,7 @@ function nameSearch(input, names) {
 			}
 			if(studentList.children().length === 0) {
 				studentInfo.style.display = 'none';
-				
+				document.querySelector('.student-list').innerHTML = 'no Results found';
 			}
 		}
 	 showPage(matches, 1);
@@ -68,6 +68,7 @@ function nameSearch(input, names) {
 		   //show only the students that match
 				matches.push(studentInfo);
 			} 
+			
 		}
 	 showPage(matches, 1);
 	//add a message if no students are found
