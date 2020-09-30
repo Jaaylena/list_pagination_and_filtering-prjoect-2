@@ -43,21 +43,19 @@ function nameSearch(input, names) {
 		   //show only the students that match
 				matches.push(studentInfo);
 			}
-			if(ul.length === 0) {
-				studentInfo.style.display = 'none';
-			}
-		//displays no results found if no matching list items
-			typeof(ul.innerHTML = 'No Results Found');
 		}
+		if(ul.length === 0) {
+			studentInfo.style.display = 'none';
+		}
+		typeof(ul.innerHTML = 'No Results Found');
 	 showPage(matches, 1);
-		
+	appendPageLinks(matches);	
 	});
 	//an eventlistener that listens to a key press to search students.
 	searchInput.addEventListener('keyup', e => {
 		//a variable to store the matching input
 		let matches = [];
-		//selects the ul element in the HTML 
-		const ul = document.querySelector('.student-list');
+
 		//looping through the student names to check for matches.
 		for (let i = 0; i < studentList.length; i++) {
 			//creating a filter that reviews the value of the search input
@@ -73,15 +71,10 @@ function nameSearch(input, names) {
 		   //show only the students that match
 				matches.push(studentInfo);
 			} 
-			if(ul.length === 0) {
-				studentInfo.style.display = 'none';
-			}
-		//displays no results found if no matching list items
-			typeof(ul.innerHTML = 'No Results Found');
 			
 		}
 	 showPage(matches, 1);
-	
+	 appendPageLinks(matches);
 	
 	});
 	//need to change page numbers to match the amount of pgs needed for 
@@ -110,7 +103,7 @@ function appendPageLinks(list) {
 	const numberOfPgs = Math.ceil(list.length / 10);
 	//checking for the pagnation div
 	const pagDiv = document.querySelector('.pagination');
-	if (typeof(pagDiv) == 'undefined' && pagDiv == null) {
+	if (typeof(pagDiv) != 'undefined' && pagDiv != null) {
 		//removing it if it
 		pagDiv.remove();
 		console.log('element exist');
