@@ -46,8 +46,9 @@ function nameSearch(input, names) {
 		}
 		if(ul.length === 0) {
 			studentInfo.style.display = 'none';
+			typeof(ul.innerHTML = 'No Results Found');
 		}
-		typeof(ul.innerHTML = 'No Results Found');
+		
 	 showPage(matches, 1);
 	appendPageLinks(matches);	
 	});
