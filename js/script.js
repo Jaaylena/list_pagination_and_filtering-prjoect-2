@@ -26,7 +26,7 @@ function nameSearch(input, names) {
 	searchButton.addEventListener('click', (e) => {
 		//creating a variable to store the input value into an array
 		let matches = [];
-		const ul = document.querySelectorAll('.student-list');
+		const ul = document.querySelector('.student-list');
 		//looping through the student names to check for matches.
 		for (let i = 0; i < studentList.length; i++) {
 			//creating a filter that reviews the value of the search input
@@ -42,11 +42,11 @@ function nameSearch(input, names) {
 		   //show only the students that match
 				matches.push(studentInfo);
 			}
-			if(ul.children().length === 0) {
+			if(ul.length === 0) {
 				studentInfo.style.display = 'none';
-				console.log(typeof(ul.children().length === 0));
 			}
-			
+		//displays no results found if no matching list items
+			typeof(ul.innerHTML = 'No Results Found');
 		}
 	 showPage(matches, 1);
 		
@@ -73,7 +73,6 @@ function nameSearch(input, names) {
 			
 		}
 	 showPage(matches, 1);
-	//add a message if no students are found
 	});
 	//need to change page numbers to match the amount of pgs needed for 
 }
