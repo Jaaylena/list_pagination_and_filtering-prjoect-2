@@ -116,7 +116,6 @@ function appendPageLinks(list) {
 	if (typeof(pagDiv) != 'undefined' && pagDiv != null) {
 		//removing it if it
 		pagDiv.remove();
-		console.log('element exist');
 	}
 	/* creating a div with pagination class with a ul that stores the pg links
 	and appending it to the div.page**/
