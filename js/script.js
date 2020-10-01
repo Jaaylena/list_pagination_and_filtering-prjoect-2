@@ -20,7 +20,9 @@ function nameSearch(input, names) {
 	const searchButton = document.createElement('button');
 	headerDiv.appendChild(searchButton);
 	searchButton.type = 'submit';
-	searchButton.textContent = 'Search';
+   searchButton.textContent = 'Search';
+   //creating an onlcick for the searchButton to erase user input 
+   searchButton.onclick = '';
 	/* create an event listener that listens for a click 
 	 */
 	searchButton.addEventListener('click', (e) => {
@@ -41,14 +43,13 @@ function nameSearch(input, names) {
 			and pushing it to the matches array*/
 			if (studentNames.includes(filter)) {
 		   //show only the students that match
-				matches.push(studentInfo);
+            matches.push(studentInfo);
 			}
 		}
-		if(ul.length === 0) {
-			studentInfo.style.display = 'none';
-			typeof(ul.innerHTML = 'No Results Found');
+		if(matches.length === 0) {
+         ul.innerHTML = 'No Results Found';
 		}
-		
+      searchInput.value = '';
 	 showPage(matches, 1);
 	appendPageLinks(matches);	
 	});
@@ -56,7 +57,8 @@ function nameSearch(input, names) {
 	searchInput.addEventListener('keyup', e => {
 		//a variable to store the matching input
 		let matches = [];
-
+      //selects the ul element in the HTML 
+      const ul = document.querySelector('.student-list');
 		//looping through the student names to check for matches.
 		for (let i = 0; i < studentList.length; i++) {
 			//creating a filter that reviews the value of the search input
@@ -71,9 +73,11 @@ function nameSearch(input, names) {
 			if (studentNames.includes(filter)) {
 		   //show only the students that match
 				matches.push(studentInfo);
-			} 
-			
-		}
+			} 	
+      }
+      if(matches.length === 0) {
+         ul.innerHTML = 'No Results Found'; 
+      } 
 	 showPage(matches, 1);
 	 appendPageLinks(matches);
 	
