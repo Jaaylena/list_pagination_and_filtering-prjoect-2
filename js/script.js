@@ -45,10 +45,12 @@ function nameSearch(input, names) {
 		   //show only the students that match
             matches.push(studentInfo);
 			}
-		}
+      } 
+      // if no matches display 'no results' 
 		if(matches.length === 0) {
          ul.innerHTML = 'No Results Found';
-		}
+      }
+      //will remove the user input once search button is clicked 
       searchInput.value = '';
 	 showPage(matches, 1);
 	appendPageLinks(matches);	
@@ -78,6 +80,9 @@ function nameSearch(input, names) {
       if(matches.length === 0) {
          ul.innerHTML = 'No Results Found'; 
       } 
+      if(searchInput === null) {
+         ul.innerHTML = studentList;
+      }
 	 showPage(matches, 1);
 	 appendPageLinks(matches);
 	
