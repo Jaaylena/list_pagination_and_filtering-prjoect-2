@@ -50,13 +50,18 @@ function nameSearch(input, names) {
 		if(matches.length === 0) {
          ul.innerHTML = 'No Results Found';
       }
+      //returning list or matches after new search 
+      if(searchInput === null) {
+         ul.innerHTML.replace(showPage(matches, 1));
+      }
       //will remove the user input once search button is clicked 
       searchInput.value = '';
+      console.log();
 	 showPage(matches, 1);
 	appendPageLinks(matches);	
 	});
 	//an eventlistener that listens to a key press to search students.
-	searchInput.addEventListener('keyup', e => {
+	/*searchInput.addEventListener('keyup', e => {
 		//a variable to store the matching input
 		let matches = [];
       //selects the ul element in the HTML 
@@ -66,12 +71,12 @@ function nameSearch(input, names) {
 			//creating a filter that reviews the value of the search input
 			const filter = searchInput.value.toLowerCase();
 			const studentInfo = studentList[i];
-			/*create a variable that selects the h3 element to compare */
+			//create a variable that selects the h3 element to compare 
 			const studentNames = studentInfo.querySelector('h3').innerText.toLowerCase();
 			//hiding list
 			studentInfo.style.display = 'none';
-			/*conditional statement to compare the search value with the student names variable 
-			and pushing it to the matches array*/
+			//conditional statement to compare the search value with the student names variable 
+			//and pushing it to the matches array
 			if (studentNames.includes(filter)) {
 		   //show only the students that match
 				matches.push(studentInfo);
@@ -86,7 +91,7 @@ function nameSearch(input, names) {
 	 showPage(matches, 1);
 	 appendPageLinks(matches);
 	
-	});
+	}); */
 	//need to change page numbers to match the amount of pgs needed for 
 }
 /***function to display 10 students to a page at a time. ***/
