@@ -44,24 +44,27 @@ function nameSearch(input, names) {
 			if (studentNames.includes(filter)) {
 		   //show only the students that match
             matches.push(studentInfo);
-			}
+         }
       } 
       // if no matches display 'no results' 
-		if(matches.length === 0) {
+      if(matches.length === 0) {
          ul.innerHTML = 'No Results Found';
+      } 
+//if searchInput is null display 
+      if(searchInput === null) {  //problem area
+         ul.innerHTML = studentList; //problem area
+      } else if(searchInput.value === '') { //problem area
+         showPage(studentList, 1); //not working FML 
       }
-      //returning list or matches after new search 
-      if(searchInput === null) {
-         ul.innerHTML.replace(showPage(matches, 1));
-      }
-      //will remove the user input once search button is clicked 
+      // removes user input when search button is clicked
       searchInput.value = '';
-      console.log();
-	 showPage(matches, 1);
-	appendPageLinks(matches);	
+      //shows the matches to the page
+      showPage(matches, 1);
+      //show the total of pages for the amount of matches 
+	   appendPageLinks(matches);	
 	});
 	//an eventlistener that listens to a key press to search students.
-	/*searchInput.addEventListener('keyup', e => {
+	searchInput.addEventListener('keyup', e => {
 		//a variable to store the matching input
 		let matches = [];
       //selects the ul element in the HTML 
@@ -91,7 +94,7 @@ function nameSearch(input, names) {
 	 showPage(matches, 1);
 	 appendPageLinks(matches);
 	
-	}); */
+	});
 	//need to change page numbers to match the amount of pgs needed for 
 }
 /***function to display 10 students to a page at a time. ***/
