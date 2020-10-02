@@ -28,12 +28,13 @@ function nameSearch(input, names) {
 	searchButton.addEventListener('click', (e) => {
 		//creating a variable to store the input value into an array
 		let matches = [];
+		const filter = searchInput.value.toLowerCase();
+		const studentDetails = document.querySelectorAll('.student-item');
 		//selects the ul element in the HTML 
 		const ul = document.querySelector('.student-list');
 		//looping through the student names to check for matches.
 		for (let i = 0; i < studentList.length; i++) {
 			//creating a filter that reviews the value of the search input
-			const filter = searchInput.value.toLowerCase();
 			const studentInfo = studentList[i];
 			/*create a variable that selects the h3 element to compare */
 			const studentNames = studentInfo.querySelector('h3').innerText.toLowerCase();
@@ -45,16 +46,21 @@ function nameSearch(input, names) {
 		   //show only the students that match
             matches.push(studentInfo);
          }
-      } 
-      // if no matches display 'no results' 
-      if(matches.length === 0) {
-         ul.innerHTML = 'No Results Found';
-      } 
-//if searchInput is empty display the list items again 
-		if(searchInput === null) {
+	  } 
+	  if(matches) {
+		   //shows the matches to the page
+		   showPage(matches, 1);
+		   //show the total of pages for the amount of matches 
+			appendPageLinks(matches);
+		 // if no matches display 'no results
+	  }else if(matches.length === 0) {
+		 ul.innerHTML = 'No Results Found';
+		 //if searchInput is empty display the list items again 
+      } else if(searchInput === null) {
 			ul.innerHTML = studentList;
 	 }
-	 console.log(searchInput.value.length)
+	
+	 console.log()
       // removes user input when search button is clicked
       searchInput.value = '';
       //shows the matches to the page
@@ -63,7 +69,7 @@ function nameSearch(input, names) {
 	   appendPageLinks(matches);	
 	});
 	//an eventlistener that listens to a key press to search students.
-	searchInput.addEventListener('keyup', e => {
+	/*searchInput.addEventListener('keyup', e => {
 		//a variable to store the matching input
 		let matches = [];
       //selects the ul element in the HTML 
@@ -87,13 +93,13 @@ function nameSearch(input, names) {
       if(matches.length === 0) {
          ul.innerHTML = 'No Results Found'; 
       } 
-      if(searchInput === null) {
+       else if(searchInput === null) {
          ul.innerHTML = studentList;
       }
 	 showPage(matches, 1);
 	 appendPageLinks(matches);
 	
-	});
+	}); */
 	//need to change page numbers to match the amount of pgs needed for 
 }
 /***function to display 10 students to a page at a time. ***/
