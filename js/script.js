@@ -53,7 +53,7 @@ function nameSearch(input, names) {
 		   //show the total of pages for the amount of matches 
 			appendPageLinks(matches);
 		 // if no matches display 'no results
-	  }else if(matches.length === 0) {
+	  }if(matches.length === 0) {
 		 ul.innerHTML = 'No Results Found';
 		 //if searchInput is empty display the list items again 
       } else if(searchInput === null) {
