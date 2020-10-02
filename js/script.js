@@ -51,9 +51,8 @@ function nameSearch(input, names) {
          ul.innerHTML = 'No Results Found';
       } 
 //if searchInput is empty display the list items again 
-     if(searchInput.value.length === 0) {
-		
-		searchButton.onclick = studentList;
+		if(searchInput === null) {
+			ul.innerHTML = studentList;
 	 }
 	 console.log(searchInput.value.length)
       // removes user input when search button is clicked
