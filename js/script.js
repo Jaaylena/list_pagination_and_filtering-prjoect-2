@@ -22,7 +22,7 @@ function nameSearch(input, names) {
 	searchButton.type = 'submit';
    searchButton.textContent = 'Search';
    //creating an onlcick for the searchButton to erase user input 
-   searchButton.onclick = '';
+   
 	/* create an event listener that listens for a click 
 	 */
 	searchButton.addEventListener('click', (e) => {
@@ -50,12 +50,12 @@ function nameSearch(input, names) {
       if(matches.length === 0) {
          ul.innerHTML = 'No Results Found';
       } 
-//if searchInput is null display 
-      if(searchInput === null) {  //problem area
-         ul.innerHTML = studentList; //problem area
-      } else if(searchInput.value === '') { //problem area
-         showPage(studentList, 1); //not working FML 
-      }
+//if searchInput is empty display the list items again 
+     if(searchInput.value.length === 0) {
+		
+		searchButton.onclick = studentList;
+	 }
+	 console.log(searchInput.value.length)
       // removes user input when search button is clicked
       searchInput.value = '';
       //shows the matches to the page
