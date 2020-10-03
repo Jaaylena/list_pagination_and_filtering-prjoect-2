@@ -21,7 +21,6 @@ function nameSearch(input, names) {
 	headerDiv.appendChild(searchButton);
 	searchButton.type = 'submit';
    searchButton.textContent = 'Search';
-   //creating an onlcick for the searchButton to erase user input 
    
 	/* create an event listener that listens for a click 
 	 */
@@ -29,11 +28,6 @@ function nameSearch(input, names) {
 		//creating a variable to store the input value into an array
 		let matches = [];
       const filter = searchInput.value.toLowerCase();
-      const ul = document.querySelector('.student-list');
-      let noResults = document.createElement('p');
-      ul.appendChild(noResults);
-		//selects the ul element in the HTML 
-		
 		//looping through the student names to check for matches.
 		for (let i = 0; i < studentList.length; i++) {
 			//creating a filter that reviews the value of the search input
@@ -48,32 +42,27 @@ function nameSearch(input, names) {
 		   //show only the students that match
             matches.push(studentInfo);
          }
-	  } 
-	  if(matches) {
-		   //shows the matches to the page
+          //shows the matches to the page
 		   showPage(matches, 1);
 		   //show the total of pages for the amount of matches 
-			appendPageLinks(matches);
-		 // if no matches display 'no results
-	  }if(matches.length === 0) {
-      noResults.innerText = 'No results Found';
-
-		 //if searchInput is empty display the list items again 
-      } else if(searchInput === null) {
-         ul.removeChild(noResults);
-			ul.innerHTML = studentList;
+         appendPageLinks(matches);
+          // removes user input when search button is clicked
+         searchInput.value = '';
+	  }
+		 // if no matches display 'no students found 
+	   if (matches.length === 0) {
+        document.querySelector('h2').textContent = 'No Students Found';
+		 //else if matches.length is greater than 0 or searchInput is empty return list 
+      } else if (matches.length > 0 || searchInput.value == '') {
+         document.querySelector('h2').textContent = 'Students';
 	 }
-	
-	 console.log(matches.length === 0)
-      // removes user input when search button is clicked
-      searchInput.value = '';
       //shows the matches to the page
       showPage(matches, 1);
       //show the total of pages for the amount of matches 
 	   appendPageLinks(matches);	
 	});
 	//an eventlistener that listens to a key press to search students.
-	/*searchInput.addEventListener('keyup', e => {
+	searchInput.addEventListener('keyup', e => {
 		//a variable to store the matching input
 		let matches = [];
       //selects the ul element in the HTML 
@@ -92,26 +81,25 @@ function nameSearch(input, names) {
 			if (studentNames.includes(filter)) {
 		   //show only the students that match
 				matches.push(studentInfo);
-			} 	
-      }
-      if(matches) {
-		   //shows the matches to the page
+         } 	
+               //shows the matches to the page
 		   showPage(matches, 1);
 		   //show the total of pages for the amount of matches 
-			appendPageLinks(matches);
-		 // if no matches display 'no results
-	  }if(matches.length === 0) {
-      noResults.innerText = 'No results Found';
-		 //if searchInput is empty display the list items again 
-      } else if(searchInput === null) {
-			ul.innerHTML = studentList;
-    }
+         appendPageLinks(matches);
+          // removes user input when search button is clicked
+   	  }
+		 // if no matches display 'no students found 
+	   if (matches.length === 0) {
+        document.querySelector('h2').textContent = 'No Students Found';
+		 //else if matches.length is greater than 0 or searchInput is empty return list 
+      } else if (matches.length > 0 || searchInput.value == '') {
+         document.querySelector('h2').textContent = 'Students';
+	 }
       //shows the matches to the page
       showPage(matches, 1);
       //show the total of pages for the amount of matches 
-	   appendPageLinks(matches);	
-    
-	}); */
+	   appendPageLinks(matches);
+	}); 
 	//need to change page numbers to match the amount of pgs needed for 
 }
 /***function to display 10 students to a page at a time. ***/
