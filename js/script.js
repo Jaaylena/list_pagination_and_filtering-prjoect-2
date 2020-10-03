@@ -20,14 +20,13 @@ function nameSearch(input, names) {
 	const searchButton = document.createElement('button');
 	headerDiv.appendChild(searchButton);
 	searchButton.type = 'submit';
-   searchButton.textContent = 'Search';
-   
+	searchButton.textContent = 'Search';
 	/* create an event listener that listens for a click 
 	 */
 	searchButton.addEventListener('click', (e) => {
 		//creating a variable to store the input value into an array
 		let matches = [];
-      const filter = searchInput.value.toLowerCase();
+		const filter = searchInput.value.toLowerCase();
 		//looping through the student names to check for matches.
 		for (let i = 0; i < studentList.length; i++) {
 			//creating a filter that reviews the value of the search input
@@ -39,34 +38,36 @@ function nameSearch(input, names) {
 			/*conditional statement to compare the search value with the student names variable 
 			and pushing it to the matches array*/
 			if (studentNames.includes(filter)) {
-		   //show only the students that match
-            matches.push(studentInfo);
-         }
-          //shows the matches to the page
-		   showPage(matches, 1);
-		   //show the total of pages for the amount of matches 
-         appendPageLinks(matches);
-          // removes user input when search button is clicked
-         searchInput.value = '';
-	  }
-		 // if no matches display 'no students found 
-	   if (matches.length === 0) {
-        document.querySelector('h2').textContent = 'No Students Found';
-		 //else if matches.length is greater than 0 or searchInput is empty return list 
-      } else if (matches.length > 0 || searchInput.value == '') {
-         document.querySelector('h2').textContent = 'Students';
-	 }
-      //shows the matches to the page
-      showPage(matches, 1);
-      //show the total of pages for the amount of matches 
-	   appendPageLinks(matches);	
+				//show only the students that match
+				matches.push(studentInfo);
+			}
+			//shows the matches to the page
+			showPage(matches, 1);
+			//show the total of pages for the amount of matches 
+			appendPageLinks(matches);
+			// removes user input when search button is clicked
+			searchInput.value = '';
+		}
+		// if no matches display 'no students found 
+		if (matches.length === 0) {
+			document.querySelector('h2').textContent = 'No Students Found';
+			document.querySelector('h2').style.color = 'red';
+			//else if matches.length is greater than 0 or searchInput is empty return list 
+		} else if (matches.length > 0 || searchInput.value == '') {
+			document.querySelector('h2').textContent = 'Students';
+			document.querySelector('h2').style.color = 'gray';
+		}
+		//shows the matches to the page
+		showPage(matches, 1);
+		//show the total of pages for the amount of matches 
+		appendPageLinks(matches);
 	});
 	//an eventlistener that listens to a key press to search students.
 	searchInput.addEventListener('keyup', e => {
 		//a variable to store the matching input
 		let matches = [];
-      //selects the ul element in the HTML 
-      const ul = document.querySelector('.student-list');
+		//selects the ul element in the HTML 
+		const ul = document.querySelector('.student-list');
 		//looping through the student names to check for matches.
 		for (let i = 0; i < studentList.length; i++) {
 			//creating a filter that reviews the value of the search input
@@ -79,27 +80,29 @@ function nameSearch(input, names) {
 			//conditional statement to compare the search value with the student names variable 
 			//and pushing it to the matches array
 			if (studentNames.includes(filter)) {
-		   //show only the students that match
+				//show only the students that match
 				matches.push(studentInfo);
-         } 	
-               //shows the matches to the page
-		   showPage(matches, 1);
-		   //show the total of pages for the amount of matches 
-         appendPageLinks(matches);
-          // removes user input when search button is clicked
-   	  }
-		 // if no matches display 'no students found 
-	   if (matches.length === 0) {
-        document.querySelector('h2').textContent = 'No Students Found';
-		 //else if matches.length is greater than 0 or searchInput is empty return list 
-      } else if (matches.length > 0 || searchInput.value == '') {
-         document.querySelector('h2').textContent = 'Students';
-	 }
-      //shows the matches to the page
-      showPage(matches, 1);
-      //show the total of pages for the amount of matches 
-	   appendPageLinks(matches);
-	}); 
+			}
+			//shows the matches to the page
+			showPage(matches, 1);
+			//show the total of pages for the amount of matches 
+			appendPageLinks(matches);
+			// removes user input when search button is clicked
+		}
+		// if no matches display 'no students found 
+		if (matches.length === 0) {
+			document.querySelector('h2').textContent = 'No Students Found';
+			document.querySelector('h2').style.color = 'red';
+			//else if matches.length is greater than 0 or searchInput is empty return list 
+		} else if (matches.length > 0 || searchInput.value == '') {
+			document.querySelector('h2').textContent = 'Students';
+			document.querySelector('h2').style.color = 'gray';
+		}
+		//shows the matches to the page
+		showPage(matches, 1);
+		//show the total of pages for the amount of matches 
+		appendPageLinks(matches);
+	});
 	//need to change page numbers to match the amount of pgs needed for 
 }
 /***function to display 10 students to a page at a time. ***/
@@ -121,7 +124,6 @@ function showPage(list, page) {
 /**a funtion that determines the number of pages needed to append 10 out of 54
  * students */
 function appendPageLinks(list) {
-	
 	//calculating the number of pages needed to display the student list
 	const numberOfPgs = Math.ceil(list.length / 10);
 	//checking for the pagnation div
@@ -134,7 +136,7 @@ function appendPageLinks(list) {
 	and appending it to the div.page**/
 	const divClassPage = document.querySelector('.page');
 	const divPagination = document.createElement('div');
-   const ulPagination = document.createElement('ul'); 
+	const ulPagination = document.createElement('ul');
 	divPagination.className = 'pagination';
 	divClassPage.appendChild(divPagination);
 	divPagination.appendChild(ulPagination);
