@@ -28,10 +28,12 @@ function nameSearch(input, names) {
 	searchButton.addEventListener('click', (e) => {
 		//creating a variable to store the input value into an array
 		let matches = [];
-		const filter = searchInput.value.toLowerCase();
-		const studentDetails = document.querySelectorAll('.student-item');
+      const filter = searchInput.value.toLowerCase();
+      const ul = document.querySelector('.student-list');
+      let noResults = document.createElement('p');
+      ul.appendChild(noResults);
 		//selects the ul element in the HTML 
-		const ul = document.querySelector('.student-list');
+		
 		//looping through the student names to check for matches.
 		for (let i = 0; i < studentList.length; i++) {
 			//creating a filter that reviews the value of the search input
@@ -54,13 +56,15 @@ function nameSearch(input, names) {
 			appendPageLinks(matches);
 		 // if no matches display 'no results
 	  }if(matches.length === 0) {
-		 ul.innerHTML = 'No Results Found';
+      noResults.innerText = 'No results Found';
+
 		 //if searchInput is empty display the list items again 
       } else if(searchInput === null) {
+         ul.removeChild(noResults);
 			ul.innerHTML = studentList;
 	 }
 	
-	 console.log()
+	 console.log(matches.length === 0)
       // removes user input when search button is clicked
       searchInput.value = '';
       //shows the matches to the page
@@ -90,15 +94,23 @@ function nameSearch(input, names) {
 				matches.push(studentInfo);
 			} 	
       }
-      if(matches.length === 0) {
-         ul.innerHTML = 'No Results Found'; 
-      } 
-       else if(searchInput === null) {
-         ul.innerHTML = studentList;
-      }
-	 showPage(matches, 1);
-	 appendPageLinks(matches);
-	
+      if(matches) {
+		   //shows the matches to the page
+		   showPage(matches, 1);
+		   //show the total of pages for the amount of matches 
+			appendPageLinks(matches);
+		 // if no matches display 'no results
+	  }if(matches.length === 0) {
+      noResults.innerText = 'No results Found';
+		 //if searchInput is empty display the list items again 
+      } else if(searchInput === null) {
+			ul.innerHTML = studentList;
+    }
+      //shows the matches to the page
+      showPage(matches, 1);
+      //show the total of pages for the amount of matches 
+	   appendPageLinks(matches);	
+    
 	}); */
 	//need to change page numbers to match the amount of pgs needed for 
 }
@@ -134,7 +146,7 @@ function appendPageLinks(list) {
 	and appending it to the div.page**/
 	const divClassPage = document.querySelector('.page');
 	const divPagination = document.createElement('div');
-	const ulPagination = document.createElement('ul');
+   const ulPagination = document.createElement('ul'); 
 	divPagination.className = 'pagination';
 	divClassPage.appendChild(divPagination);
 	divPagination.appendChild(ulPagination);
